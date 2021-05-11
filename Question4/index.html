@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="googlebot" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script
+      type="text/javascript"
+      src="http://code.jquery.com/jquery-1.7.1.js"
+    ></script>
+
+    <style type="text/css">
+      p {
+        padding: 0px 0px 0px 15px;
+      }
+      #question {
+        border: 1px solid gray;
+      }
+      div {
+        padding: 15px 15px 15px 15px;
+        border: 1px solid blue;
+      }
+    </style>
+    <title>Question 4</title>
+
+    <script type="text/javascript">
+      //<![CDATA[
+      $(function () {
+        function parenthesisCheck(inputString) {
+          var matched = true;
+          var stack = [];
+          for (var i = 0; i < inputString.length; i++) {
+            var char = inputString[i];
+            if (char == "(") {
+              stack.push(i);
+            } else if (char == ")") {
+              if (stack.length > 0) {
+                stack.pop();
+              } else {
+                matched = false;
+              }
+            }
+          }
+
+          if (stack.length > 0) {
+            matched = false;
+          }
+
+          return matched;
+        }
+
+        $("#results1").append(parenthesisCheck("(a+b)(c+d)").toString());
+        $("#results2").append(parenthesisCheck("((a*c)").toString());
+        $("#results3").append(parenthesisCheck(")").toString());
+      }); //]]>
+    </script>
+  </head>
+
+  <body>
+    <p>(a+b)(c+d):</p>
+    <div id="results1"></div>
+    <br />
+    <p>((a*c):</p>
+    <div id="results2"></div>
+    <br />
+    <p>):</p>
+    <div id="results3"></div>
+    <br />
+  </body>
+</html>
